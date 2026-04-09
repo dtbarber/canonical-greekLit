@@ -31,3 +31,20 @@ any modifications you make. Perseus provides credit for all accepted changes.
 - Run `ant` at the root of this repository.
 - In the package manager of your existDB install, select your .xar file and upload it.
 - You have now the Perseus Canonical Greek Lit installed in your repository.
+
+# Simple reader interface
+
+This repository now includes a lightweight interface at `index.xq` for browsing and reading texts without the full Scaife UI.
+
+- Open `index.xq` in your eXist-db app deployment (for example: `/exist/apps/canonical-greekLit/index.xq`).
+- The left pane lists all authors and their works, including editions/translations.
+- Click a text to read it.
+- Use **Previous** and **Next** to move one CTS section at a time.
+
+# Deploying on Render
+
+This repository now includes a `Dockerfile` and `render.yaml` for deploying to Render as a Docker web service.
+
+- `Dockerfile` builds the `.xar` via `ant` and copies it into `/exist/autodeploy/` in the final `existdb/existdb` image.
+- `render.yaml` provisions a web service with a persistent disk mounted at `/exist/data` so eXist-db data survives restarts/deploys.
+- After deployment, open `/exist/apps/canonical-greekLit/index.xq` on your service URL to use the reader interface.

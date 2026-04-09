@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: canonical-greeklit
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    healthCheckPath: /exist/
+    disk:
+      name: existdb-data
+      mountPath: /exist/data
+      sizeGB: 10
